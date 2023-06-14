@@ -24,6 +24,7 @@ namespace EnvanterYonetimSistemi
 
         public void LoadProduct()
         {
+            // Ürünleri yükler ve DataGridView'e ekler.
             int i = 0;
             dgvProduct.Rows.Clear();
             cm = new SqlCommand("SELECT * FROM tbProduct WHERE CONCAT(pid, pname, pprice, pdescription, pcategory) LIKE '%"+txtSearch.Text+"%'", con);
@@ -40,6 +41,7 @@ namespace EnvanterYonetimSistemi
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            // Ürün ekleme formunu açar ve yeni ürün eklemesine izin verir.
             ProductModuleForm formModule = new ProductModuleForm();
             formModule.btnSave.Enabled = true;
             formModule.btnUpdate.Enabled = false;
@@ -52,6 +54,7 @@ namespace EnvanterYonetimSistemi
             string colName = dgvProduct.Columns[e.ColumnIndex].Name;
             if (colName == "Edit")
             {
+                // Seçilen hücre "Edit" butonuysa, güncelleme işlemi için ürün düzenleme formunu açar.
                 ProductModuleForm productModule = new ProductModuleForm();
                 productModule.lblPid.Text = dgvProduct.Rows[e.RowIndex].Cells[1].Value.ToString();
                 productModule.txtPName.Text = dgvProduct.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -66,6 +69,7 @@ namespace EnvanterYonetimSistemi
             }
             else if (colName == "Delete")
             {
+                // Seçilen hücre "Delete" butonuysa, ürünü silme işlemi yapılır.
                 if (MessageBox.Show("Bu ürünü silmek istediğinizden emin misiniz?", "Kaydı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     con.Open();
@@ -85,6 +89,7 @@ namespace EnvanterYonetimSistemi
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            // Arama metni değiştiğinde ürünleri yeniden yükler ve filtreler.
             LoadProduct();
         }
     }

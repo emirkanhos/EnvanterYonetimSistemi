@@ -21,6 +21,7 @@ namespace EnvanterYonetimSistemi
             InitializeComponent();
             LoadCustomer();
         }
+        // Müşterileri yükleme işlemini gerçekleştirir
         public void LoadCustomer()
         {
             int i = 0;
@@ -42,14 +43,16 @@ namespace EnvanterYonetimSistemi
 
         }
 
-        
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
+        // "Add" butonunun tıklama olayı
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
+            // Müşteri modül formunu oluşturur ve açar
             CustomerModuleForm moduleForm = new CustomerModuleForm();
             moduleForm.btnSave.Enabled = true;
             moduleForm.btnUpdate.Enabled = false;
@@ -57,11 +60,13 @@ namespace EnvanterYonetimSistemi
             LoadCustomer();
         }
 
+        // Müşteri DataGridView hücre içeriği tıklama olayı
         private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dgvCustomer.Columns[e.ColumnIndex].Name;
             if (colName == "Edit")
             {
+                // Müşteri düzenleme modül formunu oluşturur ve açar
                 CustomerModuleForm customerModule = new CustomerModuleForm();
                 customerModule.lblCId.Text = dgvCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
                 customerModule.txtCName.Text = dgvCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -73,6 +78,7 @@ namespace EnvanterYonetimSistemi
             }
             else if (colName == "Delete")
             {
+                // Silme işlemini onaylama iletişim kutusu
                 if (MessageBox.Show("Bu kullanıcıyı silmek istediğinizden emin misiniz?", "Kaydı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     con.Open();

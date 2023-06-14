@@ -26,6 +26,7 @@ namespace EnvanterYonetimSistemi
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
+            // Kapatma işlemi için butona tıklanırsa formu kapatır.
             this.Dispose();
         }
 
@@ -67,11 +68,13 @@ namespace EnvanterYonetimSistemi
 
         private void txtSearchCust_TextChanged(object sender, EventArgs e)
         {
+            // Müşteri arama metin kutusuna yazıldığında müşterileri yeniden yükler.
             LoadCustomer();
         }
 
         private void txtSearchProd_TextChanged(object sender, EventArgs e)
         {
+            // Ürün arama metin kutusuna yazıldığında ürünleri yeniden yükler.
             LoadProduct();
         }
 
@@ -81,6 +84,7 @@ namespace EnvanterYonetimSistemi
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+            // Miktar seçiminde değer değiştiğinde miktarı alır ve stok kontrolü yapar.
             GetQty();
             if(Convert.ToInt32(UDQty.Value)>qty)
             {
@@ -98,12 +102,14 @@ namespace EnvanterYonetimSistemi
 
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Müşteri tablosunda hücreye tıklanırsa ilgili verileri alır.
             txtCId.Text = dgvCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtCName.Text = dgvCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
         }
 
         private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Ürün tablosunda hücreye tıklanırsa ilgili verileri alır.
             txtPid.Text = dgvProduct.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtPName.Text = dgvProduct.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtPrice.Text = dgvProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -156,6 +162,7 @@ namespace EnvanterYonetimSistemi
 
         public void Clear()
         {
+            // Formu temizler.
             txtCId.Clear();
             txtCName.Clear();
 
@@ -170,6 +177,7 @@ namespace EnvanterYonetimSistemi
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            // Temizleme işlemi için butona tıklanırsa formu temizler.
             Clear();
 
         }
@@ -185,6 +193,7 @@ namespace EnvanterYonetimSistemi
         }
         public void GetQty()
         {
+            // Ürün miktarını alır.
             cm = new SqlCommand("SELECT * FROM tbProduct WHERE pid='" + txtPid.Text + "'", con);
             con.Open();
             dr = cm.ExecuteReader();

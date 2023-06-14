@@ -14,6 +14,7 @@ namespace EnvanterYonetimSistemi
         [STAThread]
         static void Main()
         {
+            /// Uygulamanın ana girdi noktası.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new WelcomeForm ());

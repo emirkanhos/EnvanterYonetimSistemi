@@ -21,10 +21,13 @@ namespace EnvanterYonetimSistemi
             InitializeComponent();
             LoadCategory();
         }
+
+        // Kategorileri yükle
         public void LoadCategory()
         {
             int i = 0;
             dgvCategory.Rows.Clear();
+            // SQL sorgusu ile tbCategory tablosundan verileri çek
             cm = new SqlCommand("SELECT * FROM tbCategory", con);
             con.Open();
             dr = cm.ExecuteReader();
@@ -37,6 +40,7 @@ namespace EnvanterYonetimSistemi
             con.Close();
         }
 
+        // Kategori ekle butonu tıklama olayı
         private void btnAdd_Click(object sender, EventArgs e)
         {
             CategoryModuleForm formModule = new CategoryModuleForm();
@@ -46,6 +50,7 @@ namespace EnvanterYonetimSistemi
             LoadCategory();
         }
 
+        // Kategori tablosundaki hücre içeriği tıklama olayı
         private void dgvCategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dgvCategory.Columns[e.ColumnIndex].Name;
@@ -63,6 +68,8 @@ namespace EnvanterYonetimSistemi
                 if (MessageBox.Show("Bu kategoriyi silmek istediğinizden emin misiniz?", "Kaydı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     con.Open();
+
+                    // Seçilen satırdaki verileri CategoryModuleForm'a aktar
                     cm = new SqlCommand("DELETE FROM tbCategory WHERE catid LIKE'" + dgvCategory.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
                     cm.ExecuteNonQuery();
                     con.Close();

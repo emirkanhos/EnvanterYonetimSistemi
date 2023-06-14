@@ -22,6 +22,7 @@ namespace EnvanterYonetimSistemi
             LoadOrder();
         }
 
+        // Siparişleri yükleme metodunu çağıran ve toplam miktarı ve tutarı hesaplayan metod.
         public void LoadOrder()
         {
             double total = 0;
@@ -43,6 +44,7 @@ namespace EnvanterYonetimSistemi
             lblTotal.Text = total.ToString();
         }
 
+        // "Ekle" düğmesine tıklandığında sipariş modülü formunu açar ve siparişleri yeniden yükler.
         private void btnAdd_Click(object sender, EventArgs e)
         {
             OrderModuleForm moduleForm = new OrderModuleForm();
@@ -56,7 +58,8 @@ namespace EnvanterYonetimSistemi
             
             if (colName == "Delete")
             {
-                if (MessageBox.Show("Bu kullanıcıyı silmek istediğinizden emin misiniz?", "Kaydı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                // Sil düğmesine tıklanırsa ilgili siparişi siler ve stok miktarını günceller.
+                if (MessageBox.Show("Bu siparişi silmek istediğinizden emin misiniz?", "Kaydı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     con.Open();
                     cm = new SqlCommand("DELETE FROM tbOrder WHERE orderid LIKE'" + dgvOrder.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
@@ -82,6 +85,7 @@ namespace EnvanterYonetimSistemi
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            // Arama metin kutusuna yazıldığında siparişleri yeniden yükler.
             LoadOrder();
 
         }

@@ -20,6 +20,7 @@ namespace EnvanterYonetimSistemi
             InitializeComponent();
         }
 
+        // "Save" butonunun tıklama olayı
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -41,12 +42,14 @@ namespace EnvanterYonetimSistemi
                 MessageBox.Show(ex.Message);
             }
         }
+        // Alanları temizler
         public void Clear()
         {
             txtCName.Clear();
             txtCPhone.Clear();
         }
 
+        // "Clear" butonunun tıklama olayı
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
@@ -54,11 +57,13 @@ namespace EnvanterYonetimSistemi
             btnUpdate.Enabled = true;
         }
 
+        // Kapatma simgesi tıklama olayı
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
+        // "Update" butonunun tıklama olayı
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 

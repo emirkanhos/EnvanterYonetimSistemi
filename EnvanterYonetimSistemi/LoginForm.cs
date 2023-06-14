@@ -38,6 +38,7 @@ namespace EnvanterYonetimSistemi
 
         private void checkBoxPass_CheckedChanged(object sender, EventArgs e)
         {
+            // Parola göster/gizleme işlemi
             if (checkBoxPass.Checked == false)
                 txtpass.UseSystemPasswordChar = true;
             else
@@ -47,13 +48,15 @@ namespace EnvanterYonetimSistemi
 
         private void lblclear_Click(object sender, EventArgs e)
         {
+            // Kullanıcı adı ve parola alanlarını temizleme
             txtname.Clear();
             txtpass.Clear();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Uygulamadan Çıkış Yap","Emin Misiniz?",MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
+            // Uygulamadan çıkış yapma
+            if (MessageBox.Show("Uygulamadan Çıkış Yap","Emin Misiniz?",MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -63,6 +66,7 @@ namespace EnvanterYonetimSistemi
         {
             try
             {
+                // Kullanıcı adı ve parolayı kontrol etme
                 cm = new SqlCommand("SELECT * FROM tbUser WHERE username=@username AND password=@password", con);
                 cm.Parameters.AddWithValue("@username", txtname.Text);
                 cm.Parameters.AddWithValue("@password", txtpass.Text);
@@ -71,6 +75,7 @@ namespace EnvanterYonetimSistemi
                 dr.Read();
                 if(dr.HasRows)
                 {
+                    // Giriş başarılıysa ana formu açma
                     MessageBox.Show("Hoşgeldiniz " + dr["fullname"].ToString() + "  |  ", "GİRİŞ ONAYLANDI", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MainForm main = new MainForm();
                     this.Hide();
@@ -79,7 +84,8 @@ namespace EnvanterYonetimSistemi
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password!", "GİRİŞ REDDEDİLDİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Giriş başarısızsa hata mesajı gösterme
+                    MessageBox.Show("Hatalı kullanıcı adı veya parola!", "GİRİŞ REDDEDİLDİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 con.Close();
             }
@@ -87,6 +93,7 @@ namespace EnvanterYonetimSistemi
             {
 
 
+                // Hata durumunda hata mesajı gösterme
                 MessageBox.Show(ex.Message);
             }
         }

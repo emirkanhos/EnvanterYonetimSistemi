@@ -63,6 +63,7 @@ namespace EnvanterYonetimSistemi
 
         }
 
+        // Formdaki kullanıcı giriş alanlarını temizler
         public void Clear()
         {
             txtUserName.Clear();

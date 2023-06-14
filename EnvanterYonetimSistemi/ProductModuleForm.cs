@@ -23,6 +23,7 @@ namespace EnvanterYonetimSistemi
         }
         public void LoadCategory()
         {
+            // Kategori bilgilerini yükler ve ComboBox'a ekler.
             comboCat.Items.Clear();
             cm = new SqlCommand("SELECT catname FROM tbCategory", con);
             con.Open();
@@ -42,6 +43,7 @@ namespace EnvanterYonetimSistemi
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
+            // Formu kapatır.
             this.Dispose();
         }
 
@@ -52,6 +54,7 @@ namespace EnvanterYonetimSistemi
                 
                 if (MessageBox.Show("Bu ürünü kaydetmek istediğinizden emin misiniz?", "Kaydı kaydetmek istediğinizden emin misiniz?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    // Yeni bir ürün kaydeder.
                     cm = new SqlCommand("INSERT INTO tbProduct(pname,pqty,pprice,pdescription,pcategory)VALUES(@pname, @pqty, @pprice, @pdescription, @pcategory)", con);
                     cm.Parameters.AddWithValue("@pname", txtPName.Text);
                     cm.Parameters.AddWithValue("@pqty", Convert.ToInt16(txtPQty.Text));
@@ -72,6 +75,7 @@ namespace EnvanterYonetimSistemi
         }
         public void Clear()
         {
+            // Formdaki giriş alanlarını temizler.
             txtPName.Clear();
             txtPQty.Clear();
             txtPPrice.Clear();
@@ -81,6 +85,7 @@ namespace EnvanterYonetimSistemi
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            // Giriş alanlarını temizler ve kaydetme düğmesini etkinleştirir, güncelleme düğmesini devre dışı bırakır.
             Clear();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
@@ -93,6 +98,7 @@ namespace EnvanterYonetimSistemi
                
                 if (MessageBox.Show("Bu ürünü güncellemek istediğinizden emin misiniz?", "Kaydı güncellemek istediğinizden emin misiniz?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    // Seçilen ürünü günceller.
                     cm = new SqlCommand("UPDATE tbProduct SET pname=@pname, pqty=@pqty, pprice=@pprice, pdescription=@pdescription, pcategory=@pcategory WHERE pid LIKE '" + lblPid.Text + "'", con);
                     cm.Parameters.AddWithValue("@pname", txtPName.Text);
                     cm.Parameters.AddWithValue("@pqty", Convert.ToInt16(txtPQty.Text));

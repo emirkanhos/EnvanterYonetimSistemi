@@ -27,6 +27,7 @@ namespace EnvanterYonetimSistemi
             string colName = dgvUser.Columns[e.ColumnIndex].Name;
             if(colName=="Edit")
             {
+                // Seçilen kullanıcının düzenleme formunu açar
                 UserModuleForm userModule = new UserModuleForm();
                 userModule.txtUserName.Text = dgvUser.Rows[e.RowIndex].Cells[1].Value.ToString();
                 userModule.txtFullName.Text = dgvUser.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -40,7 +41,8 @@ namespace EnvanterYonetimSistemi
             }
             else if (colName == "Delete")
             {
-                if(MessageBox.Show("Bu kullanıcıyı silmek istediğinizden emin misiniz?","Kaydı Sil",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                // Seçilen kullanıcıyı silme işlemini gerçekleştirir
+                if (MessageBox.Show("Bu kullanıcıyı silmek istediğinizden emin misiniz?","Kaydı Sil",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                 {
                     con.Open();
                     cm = new SqlCommand("DELETE FROM tbUser WHERE username LIKE'" + dgvUser.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
@@ -69,6 +71,7 @@ namespace EnvanterYonetimSistemi
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            // Kullanıcı ekleme formunu açar
             UserModuleForm userModule = new UserModuleForm();
             userModule.btnSave.Enabled = true;
             userModule.btnUpdate.Enabled = false;

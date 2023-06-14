@@ -84,6 +84,7 @@ namespace EnvanterYonetimSistemi
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WelcomeForm";
             this.Text = "Envanter Yönetim Sistemi";
+            this.Load += new System.EventHandler(this.WelcomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -25,6 +25,7 @@ namespace EnvanterYonetimSistemi
 
         }
 
+        // Kaydet butonu tıklama olayı
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -45,11 +46,14 @@ namespace EnvanterYonetimSistemi
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // Alanları temizle
         public void Clear()
         {
             txtCatName.Clear();
         }
 
+        // Temizle butonu tıklama olayı
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
@@ -57,11 +61,13 @@ namespace EnvanterYonetimSistemi
             btnUpdate.Enabled = false;
         }
 
+        // Kapatma düğmesi tıklama olayı
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
+        // Güncelleme butonu tıklama olayı
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try

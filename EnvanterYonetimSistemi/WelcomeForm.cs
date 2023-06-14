@@ -19,6 +19,7 @@ namespace EnvanterYonetimSistemi
         }
 
         int startPoint = 0;
+        // Timer'ın Tick olayı gerçekleştiğinde çalışacak kodları içerir
         private void timer1_Tick(object sender, EventArgs e)
         {
             startPoint += 2;
@@ -34,6 +35,7 @@ namespace EnvanterYonetimSistemi
 
         }
 
+        // Çıkış butonuna tıklandığında çalışacak kodları içerir
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Uygulamadan Çıkış Yap", "Emin Misiniz?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -43,6 +45,11 @@ namespace EnvanterYonetimSistemi
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WelcomeForm_Load(object sender, EventArgs e)
         {
 
         }

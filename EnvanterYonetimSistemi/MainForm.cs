@@ -24,11 +24,13 @@ namespace EnvanterYonetimSistemi
 
         private void customerButton1_Click(object sender, EventArgs e)
         {
+            // "Ürünler" butonuna tıklandığında çağrılacak metod.
             openChildForm(new ProductForm());
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            // "Müşteriler" butonuna tıklandığında çağrılacak metod.
             openChildForm(new CustomerForm());
         }
 
@@ -44,6 +46,7 @@ namespace EnvanterYonetimSistemi
 
         private void customerButton5_Click(object sender, EventArgs e)
         {
+            // "Siparişler" butonuna tıklandığında çağrılacak metod.
             openChildForm(new OrderForm());
         }
         //alt formu ana formda göstermek için
@@ -65,11 +68,13 @@ namespace EnvanterYonetimSistemi
 
         private void btnUser_Click(object sender, EventArgs e)
         {
+            // "Kullanıcılar" butonuna tıklandığında çağrılacak metod.
             openChildForm(new UserForm());
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
+            // "Kategoriler" butonuna tıklandığında çağrılacak metod.
             openChildForm(new CategoryForm());
         }
 
